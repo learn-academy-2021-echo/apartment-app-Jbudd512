@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Nav, NavItem, NavLink } from "reactstrap";
 
 class Header extends Component {
   render() {
@@ -12,18 +13,24 @@ class Header extends Component {
     return (
       <>
         <h1>Header</h1>
-        {/* <br />
-        <br />
-        {logged_in && (
-          <div>
-            <a href={sign_out_route}>Sign Out</a>
-          </div>
-        )}
-        {!logged_in && (
-          <div>
-            <a href={sign_in_route}>Sign In</a>
-          </div>
-        )} */}
+        <Nav>
+          <NavItem>
+            <ul>
+              <li>
+                <NavLink href="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink href="/aptindex">See all apartments</NavLink>
+              </li>
+              <li>
+                <NavLink href={sign_in_route}>Sign in</NavLink>
+              </li>
+              <li>
+                <NavLink href={sign_out_route}>Sign out</NavLink>
+              </li>
+            </ul>
+          </NavItem>
+        </Nav>
       </>
     );
   }
