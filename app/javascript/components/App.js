@@ -27,6 +27,7 @@ class App extends Component {
       sign_in_route,
       sign_out_route,
     } = this.props;
+    let { apartments } = this.state;
     return (
       <>
         <Header apartments={this.state.apartments} {...this.props} />
@@ -36,12 +37,19 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route
               path="/aptindex"
-              render={(props) => (
-                <AptIndex apartments={this.state.apartments} />
-              )}
+              render={(props) => <AptIndex apartments={apartments} />}
             />
             <Route path="/aptindexprot" component={AptIndexProt} />
-            <Route path="/aptshow" component={AptShow} />
+            <Route
+              path="/aptshow/:id"
+              render={(props) => {
+                let id = props.match.params.id;
+                let apartment = this.state.apartments.find(
+                  (apartment) => apartment.id === +id
+                );
+                return <AptShow apartment={apartment} />;
+              }}
+            />
             <Route path="/aptnew" component={AptNew} />
             <Route path="/aptedit" component={AptEdit} />
             <Route path="/aptdelete" component={AptDelete} />
