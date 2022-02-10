@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, CardTitle, Col } from "reactstrap";
+import { NavLink } from "react-router-dom";
 
 class AptIndex extends Component {
   render() {
@@ -10,9 +11,11 @@ class AptIndex extends Component {
         <Col sm="6">
           {this.props.apartments.map((apartment) => {
             return (
-              <Card body key={apartment.street}>
+              <Card body key={apartment.id}>
                 <CardTitle>
-                  <h4>{apartment.street}</h4>
+                  <NavLink to={`/aptshow/${apartment.id}`}>
+                    {apartment.street}
+                  </NavLink>
                 </CardTitle>
               </Card>
             );

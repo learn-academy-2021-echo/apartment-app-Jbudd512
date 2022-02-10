@@ -1,5 +1,6 @@
 let apartments = [
   {
+    id: 1,
     street: "12345 Generic Street Name",
     city: "A place",
     state: "Somewhere",
@@ -12,6 +13,7 @@ let apartments = [
     user_id: 1,
   },
   {
+    id: 2,
     street: "3001 Esperanza Crossing Ste 1001",
     city: "Austin",
     state: "TX",
