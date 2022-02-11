@@ -25,5 +25,18 @@ let apartments = [
     pets: "No pets",
     user_id: 1,
   },
+  {
+    id: 3,
+    street: "801 Spring Loop",
+    city: "College Station",
+    state: "TX",
+    manager: "Laurel Ridge",
+    email: "59485reallybadcompany@gmail.com",
+    price: "1000",
+    bedrooms: 1,
+    bathrooms: 1,
+    pets: "No pets",
+    user_id: 2,
+  },
 ];
 export default apartments;
