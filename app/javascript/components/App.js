@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import mockApartments from "./assets/mockApartments";
+import mockUsers from "./assets/mockUsers";
 import Home from "./pages/Home";
 import AptIndex from "./pages/AptIndex";
 import AptIndexProt from "./pages/AptIndexProt";
@@ -17,6 +18,7 @@ class App extends Component {
     super(props);
     this.state = {
       apartments: mockApartments,
+      users: mockUsers,
     };
   }
   render() {
@@ -27,7 +29,8 @@ class App extends Component {
       sign_in_route,
       sign_out_route,
     } = this.props;
-    let { apartments } = this.state;
+    let { apartments, users } = this.state;
+    console.log(logged_in, "logged in");
     return (
       <>
         <Header apartments={this.state.apartments} {...this.props} />
@@ -39,7 +42,6 @@ class App extends Component {
               path="/aptindex"
               render={(props) => <AptIndex apartments={apartments} />}
             />
-            <Route path="/aptindexprot" component={AptIndexProt} />
             <Route
               path="/aptshow/:id"
               render={(props) => {
@@ -48,6 +50,17 @@ class App extends Component {
                   (apartment) => apartment.id === +id
                 );
                 return <AptShow apartment={apartment} />;
+              }}
+            />
+            <Route
+              path="/aptindexprot"
+              render={(props) => {
+                let myApartments = apartments.filter(
+                  (apartments) => apartments.user_id === users.id[0]
+                );
+                return (
+                  <AptIndexProt apartments={myApartments} {...this.props} />
+                );
               }}
             />
             <Route path="/aptnew" component={AptNew} />
